@@ -39,7 +39,11 @@ export class AnthropicLLM implements LLM {
       max_tokens: 4096,
     });
 
-    return response.content[0].text;
+    const textBlock = response.content.find((block) => block.type === "text");
+    if (!textBlock) {
+      throw new Error("No text block in response");
+    }
+    return textBlock.text;
   }
 
   async generateChat(messages: Message[]): Promise<LLMResponse> {
