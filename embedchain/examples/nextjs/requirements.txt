@@ -6,3 +6,4 @@ discord
 python-dotenv
 slack-sdk
 slack_bolt
+embedchain>=0.1.57 # not directly required, pinned by Snyk to avoid a vulnerability
